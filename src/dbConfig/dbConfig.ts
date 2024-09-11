@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 export const ConnectDb = async () => {
   try {
-    mongoose.connect(process.env.MONGO_URI!);
+    mongoose.connect(`${process.env.MONGO_URI!}/${"NEXTAUTH"}`);
 
     const connection = mongoose.connection;
 

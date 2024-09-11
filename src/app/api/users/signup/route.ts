@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
 
     const user = await User.findOne({ email });
 
-    console.log("user===>",user)
+    // console.log("user===>",user)
 
     if (user) {
       return NextResponse.json(
@@ -34,17 +34,17 @@ export async function POST(request: NextRequest) {
 
     const savedUser = await newUser.save();
 
-    console.log("saved user====>", savedUser);
+    // console.log("saved user====>", savedUser);
 
     // mail verify
 
     await sendEmail({ email, emailType: "VERIFY", userId: savedUser?._id });
 
     return NextResponse.json({
-      message: "user succesfully created",
-      status: true,
-      savedUser,
-    });
+        message: "User created successfully",
+        success: true,
+        savedUser
+    })
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
