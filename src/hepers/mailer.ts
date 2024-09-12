@@ -16,7 +16,7 @@ export const sendEmail = async ({ email, emailType, userId }: any) => {
         },
       });
 
-      console.log("verify")
+      console.log("verify");
     } else if (emailType === "RESET") {
       await User.findByIdAndUpdate(userId, {
         $set: {
