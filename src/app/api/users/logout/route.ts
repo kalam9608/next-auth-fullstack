@@ -11,7 +11,7 @@ export async function GET(request: NextRequest) {
       success: true,
     });
 
-    response.cookies.set("token", "", { httpOnly: true });
+    response.cookies.set("token", "", { httpOnly: true, expires: Date.now() });
 
     return response;
   } catch (error: any) {
